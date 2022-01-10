@@ -18,4 +18,47 @@ Explanation: The square root of 8 is 2.82842..., and since the decimal part is t
 
 */
 
+class Solution {
+    public int mySqrt(int x) {
+         if(x < 2)
+            return x;
+        
+        // Set start value
+        int s = 0;
+        // Set end value
+        int e = x;
+        // Initialize mid value
+        int m = 0;
+        
+        int ans = 0 ;
+       
+        while(s <= e){
+            
+            m = s + (e - s) / 2;
+            /*
+                derived from 
+                    m^2 = x
+                
+                which means, 
+                    
+                    m* m = x
+                    m = x/m
+            */
+            if(m == x/m){
+                return m;
+            }
+            
+            else if(m > x/m){
+                e = m - 1;
+            }
+            
+            else {
+                ans = m;
+                s = m + 1;
+            }
+        }
+        return ans;
+    }
+}
+
  
